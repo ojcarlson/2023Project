@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="594.0" prefWidth="717.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.addInventoryController">
+   <bottom>
+      <AnchorPane prefHeight="166.0" prefWidth="718.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="submitButton4" layoutX="142.0" layoutY="22.0" mnemonicParsing="false" onAction="#setSubmitButton4" prefHeight="103.0" prefWidth="119.0" text="Submit">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="exitButton4" layoutX="290.0" layoutY="22.0" mnemonicParsing="false" onAction="#setExitButton4" prefHeight="103.0" prefWidth="119.0" text="Exit">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="goBackButton4" layoutX="442.0" layoutY="22.0" mnemonicParsing="false" onAction="#setGoBackButton4" prefHeight="103.0" prefWidth="194.0" text="Return Search Page">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </bottom>
+   <center>
+      <AnchorPane prefHeight="396.0" prefWidth="718.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="buildingLocationLabel4" layoutX="143.0" layoutY="93.0" text="Building Location">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="quantityLabel4" layoutX="144.0" layoutY="295.0" text="Quantity">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="heciLabel4" layoutX="141.0" layoutY="122.0" text="HECI">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="statusLabel4" layoutX="141.0" layoutY="260.0" text="Status">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="167.0" layoutY="14.0" text="Add Inventory" textFill="#32cc89">
+               <font>
+                  <Font name="System Bold Italic" size="48.0" />
+               </font>
+            </Label>
+            <Label fx:id="information4Label" layoutX="305.0" layoutY="354.0" />
+            <Label fx:id="descriptionLabel4" layoutX="141.0" layoutY="157.0" text="Description">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="costLabel4" layoutX="142.0" layoutY="188.0" text="Cost">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="bayLocationLabel4" layoutX="142.0" layoutY="223.0" text="Bay Location">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <TextField layoutX="366.0" layoutY="98.0" />
+            <TextField fx:id="buildingLocationTextField4" layoutX="367.0" layoutY="98.0" promptText="Building Location" />
+            <TextField fx:id="heciTextField4" layoutX="367.0" layoutY="127.0" promptText="HECI" />
+            <TextField fx:id="descriptionTextField4" layoutX="367.0" layoutY="162.0" promptText="Description" />
+            <TextField fx:id="costTextField4" layoutX="367.0" layoutY="193.0" promptText="Cost" />
+            <TextField fx:id="bayLocationTextField4" layoutX="368.0" layoutY="228.0" promptText="Bay Location" />
+            <TextField fx:id="statusTextField4" layoutX="369.0" layoutY="265.0" promptText="Status" />
+            <TextField fx:id="quantityTextField4" layoutX="367.0" layoutY="300.0" promptText="Quantity" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

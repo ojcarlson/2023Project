@@ -1,3 +1,5 @@
+package com.example.project;
+
 import java.io.Serializable;
 //test
 public class BuildingLocation implements Serializable {

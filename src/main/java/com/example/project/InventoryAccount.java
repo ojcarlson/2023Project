@@ -1,3 +1,5 @@
+package com.example.project;
+
 public class InventoryAccount extends Inventory{
 
     InventoryAccount(String heci, String description, Double cost, Double bayLocation,
