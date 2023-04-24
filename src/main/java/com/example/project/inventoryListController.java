@@ -9,19 +9,22 @@ import javafx.scene.control.ScrollPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class inventoryListController {
 
     @FXML
     private Button exitButton;
+
     @FXML
-    private Label wrongInfoLabel;
+    private Button returnSearchButton;
+    @FXML
+    private Label wrongInfoLabel2;
     @FXML
     private Button submitButton;
     @FXML
     private Button addButton;
-    @FXML
-    private Button removeButton;
+
 
     @FXML
     private ListView listView;
@@ -37,18 +40,18 @@ public class inventoryListController {
     public void setAddButton(ActionEvent event) throws IOException {
         HelloApplication m = new HelloApplication();
        try{
-           m.changeScene("add-inventory.fxml");
+           m.newScene("add-inventory.fxml");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
-    public void setRemoveButton(ActionEvent event) throws IOException {
+
+    public void setReturnSearchButton (ActionEvent event) throws SQLException, IOException {
         HelloApplication m = new HelloApplication();
         try{
-        m.changeScene("remove-inventory.fxml");
+            m.changeScene("inventory-search.fxml");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
     }
 }
