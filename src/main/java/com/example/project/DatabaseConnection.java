@@ -1,3 +1,11 @@
+/*
+Olaf Carlson
+ocarlson@iu.edu
+Spring 2023 Project
+Indiana University Southeast
+
+This Class makes connection to mySQL Database in Docker
+ */
 package com.example.project;
 
 import java.sql.Connection;
@@ -13,11 +21,9 @@ public class DatabaseConnection {
                     "jdbc:mysql://localhost:3306/mydatabase",
                     "root", "my-secret-pw");
 
-            System.out.println("made it to database");
         } catch (Exception exception) {
             System.out.println(exception);
         }
-
         return connection;
     }
 }

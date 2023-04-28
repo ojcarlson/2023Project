@@ -1,3 +1,11 @@
+/*
+Olaf Carlson
+ocarlson@iu.edu
+Spring 2023 Project
+Indiana University Southeast
+
+This class creates Inventory Object
+ */
 package com.example.project;
 
 import java.util.ArrayList;

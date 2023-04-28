@@ -1,7 +1,12 @@
 package com.example.project;
-
+/*
+Olaf Carlson
+ocarlson@iu.edu
+Spring 2023 Project
+Indiana University Southeast
+ */
 import java.io.Serializable;
-//test
+//constructor for BuildingLocation
 public class BuildingLocation implements Serializable {
     protected String buildingLocation;
 

@@ -1,3 +1,11 @@
+/*
+Olaf Carlson
+ocarlson@iu.edu
+Spring 2023 Project
+Indiana University Southeast
+
+This class is controller for logIn.fxml GUI file
+ */
 package com.example.project;
 
 import javafx.event.ActionEvent;
@@ -21,6 +29,7 @@ import java.sql.Statement;
 import java.util.ResourceBundle;
 
 public class logInController {
+    //creates Buttons, TextFields, Label and ImageViews
     @FXML
     private Button cancelButton;
     @FXML
@@ -46,7 +55,8 @@ public class logInController {
             lockImageView.setImage(lockImage);
 
     }*/
-
+    //method to check if TextFields are blank and give error to user and if not blank
+    //call validateLogin method
     public void loginButtonOnAction(ActionEvent event) throws SQLException, IOException {
         if (username.getText().isBlank() == false && password.getText().isBlank() == false) {
            validateLogin();
@@ -55,10 +65,12 @@ public class logInController {
         }
 
     }
+    //Action Event to exit program when cancel button is pressed
     public void CancelButtonOnAction(ActionEvent event) {
         Stage stage = (Stage) cancelButton.getScene().getWindow();
         stage.close();
     }
+    //method to validate login
     public void validateLogin() throws SQLException, IOException {
         HelloApplication m = new HelloApplication();
         String queryUserPasword ="SELECT * FROM loginPassword WHERE login = '" + username.getText() + "' AND password = '" + password.getText() + "'";

@@ -1,3 +1,10 @@
+/*
+Olaf Carlson
+ocarlson@iu.edu
+Spring 2023 Project
+Indiana University Southeast
+This class is code that controls the inventory-search.fxml GUI
+ */
 package com.example.project;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -25,6 +32,7 @@ import java.util.ResourceBundle;
 import java.util.Scanner;
 
 public class inventorySearchController {
+    //creates Button, Label and TextFields along with ArrayList to store Inventory Object to be placed in mySQL
     @FXML
     private Button exitButton;
     @FXML
@@ -40,9 +48,10 @@ public class inventorySearchController {
     private ScrollPane inventoryScrollPane;
     public ArrayList<inventoryObject> inventoryList;
 
+    //Action Event to look to see if TextFields are blank to display error for user
+    //Operates searchInventory method of all TextFields are not empty
     public void setSearchButton(ActionEvent event) throws SQLException, IOException {
 
-        System.out.println("Button is working setSearchButton");
         if (buildingLocation.getText().isBlank() == false && heci.getText().isBlank() == false) {
             searchInventory();
         } else {
@@ -50,7 +59,7 @@ public class inventorySearchController {
         }
 
     }
-
+//method searchInventory and displays list for user in Inventory List Window
     public void searchInventory() throws SQLException {
 
         HelloApplication m = new HelloApplication();
@@ -73,11 +82,9 @@ public class inventorySearchController {
             Double bayLocation = resultSet.getDouble("bayLocation");
             String status = resultSet.getString("status");
             Integer quantity = resultSet.getInt("quantity");
-            System.out.println("before inventoryList.add");
             inventoryList.add(new inventoryObject(buildingLocation, heci, description, cost, bayLocation, status, quantity));
 
         }
-        System.out.println("after while loop if");
         //if exists do the following
         if (count != 0) {
             ResultSet executionworked;
@@ -87,8 +94,12 @@ public class inventorySearchController {
             connection.close();
 
             try {
+                //creates ListView and HBox
                 Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("inventory-list.fxml")));
                 ListView<HBox> listView = (ListView<HBox>) root.lookup("#listView");
+
+                listView.setMaxSize(1200,1200);
+                //creates labels and TextFields and places in HBox
                 ObservableList<HBox> oList = FXCollections.observableArrayList();
                 for (int i = 0; i < inventoryList.size(); i++) {
                     inventoryObject thisObject = inventoryList.get(i);
@@ -97,12 +108,15 @@ public class inventorySearchController {
                     Label listLabel3 = new Label(thisObject.description + "         ");
                     Label listLabel4 = new Label(Double.toString(thisObject.cost) + "         ");
                     Label listLabel5 = new Label(Double.toString(thisObject.bayLocation) + "         ");
+
+                    listLabel4.setMaxSize(50,50);
                     TextField statusTextField6 = new TextField(thisObject.status );
                     TextField quantityTextField7 = new TextField(Integer.toString(thisObject.quantity));
                     Button removeButton1 = new Button("Delete");
                     Button chgButton = new Button("Change");
                     statusTextField6.setMaxSize(80.0, 80.0);
                     quantityTextField7.setMaxSize(30.0, 30.0);
+                    listLabel4.autosize();
                     HBox row = new HBox(listLabel, listLabel2, listLabel3, listLabel4, listLabel5, statusTextField6, quantityTextField7, removeButton1, chgButton);
                     removeButton1.setOnAction(event -> {
                         try {
@@ -135,12 +149,12 @@ public class inventorySearchController {
             wrongInfoLabel.setText("Inventory not found. Try again!");
         }
     }
-
+//Action Event that exits program with Exit button is pressed
     public void setExitButton(ActionEvent event) {
         Stage stage = (Stage) exitButton.getScene().getWindow();
         stage.close();
     }
-
+    //method to remove inventory utilizing mySQL command
     public void removeInventory(String buildingLocation, String heci, double bayLocation, String status) throws SQLException {
         Connection connection = DatabaseConnection.getConnection();
         Statement qc3 = connection.createStatement();
@@ -148,13 +162,11 @@ public class inventorySearchController {
         qc3.close();
         connection.close();
     }
-
+//method to change Inventory Quantity when changed in TextField
     public static void changeInventoryQty(String buildingLocation, String heci, double bayLocation, String status, int quantity) throws SQLException {
         //makes connection to mySQL database mydatabase
-        System.out.println("Action 4");
         Connection connection = DatabaseConnection.getConnection();
         Statement qc4 = connection.createStatement();
-        System.out.println("Action 5");
         //qc4.execute("UPDATE Inventory SET status = '" + status + "', quantity = '" + quantity + "' WHERE buildingLocation = '" + buildingLocation + "' , heci = '" + heci + "' , bayLocation = '" + bayLocation + "' , status = '" + status + "' , quantity = '" + quantity + "' ");
 
         qc4.execute ("UPDATE Inventory SET quantity = '" + quantity + "'  WHERE  buildingLocation = '" + buildingLocation + "'  " +

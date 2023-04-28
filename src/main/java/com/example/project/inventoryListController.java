@@ -1,3 +1,11 @@
+/*
+Olaf Carlson
+ocarlson@iu.edu
+Spring 2023 Project
+Indiana University Southeast
+
+This class controls the inventory-list.fxml GUI
+ */
 package com.example.project;
 
 import javafx.event.ActionEvent;
@@ -12,7 +20,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 public class inventoryListController {
-
+//creates Buttons, Labels and ListView
     @FXML
     private Button exitButton;
 
@@ -20,8 +28,7 @@ public class inventoryListController {
     private Button returnSearchButton;
     @FXML
     private Label wrongInfoLabel2;
-    @FXML
-    private Button submitButton;
+
     @FXML
     private Button addButton;
 
@@ -31,12 +38,12 @@ public class inventoryListController {
 
 
 
-
+//method to set ActionEvent for Exit button to exit Application
     public void setExitButton(ActionEvent event) {
         Stage stage = (Stage) exitButton.getScene().getWindow();
         stage.close();
     }
-
+    //method to set ActionEvent for Add button to changeScene to Add Inventory Window
     public void setAddButton(ActionEvent event) throws IOException {
         HelloApplication m = new HelloApplication();
        try{
@@ -45,6 +52,7 @@ public class inventoryListController {
             throw new RuntimeException(e);
         }
     }
+    //method to set ActionEvent for ReturnSearch button to changeScene to Search Inventory Window
 
     public void setReturnSearchButton (ActionEvent event) throws SQLException, IOException {
         HelloApplication m = new HelloApplication();

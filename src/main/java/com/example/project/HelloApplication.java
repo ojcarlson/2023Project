@@ -1,3 +1,11 @@
+/*
+Olaf Carlson
+ocarlson@iu.edu
+Spring 2023 Project
+Indiana University Southeast
+
+This is main class to run Inventory Application
+ */
 package com.example.project;
 
 import javafx.application.Application;
@@ -13,6 +21,7 @@ public class HelloApplication extends Application {
     private static Stage stg;
     @Override
     public void start(Stage primaryStage) throws IOException {
+        //sets stage and size
         stg = primaryStage;
         //primaryStage.setResizable(false);
         Parent root = FXMLLoader.load(getClass().getResource("logIn.fxml"));
@@ -24,6 +33,7 @@ public class HelloApplication extends Application {
         primaryStage.show();
 
     }
+    //this method is called to changeScene
     public void changeScene(String fxml) throws IOException{
         Parent pane = FXMLLoader.load(getClass().getResource(fxml));
         stg.getScene().setRoot(pane);
@@ -31,25 +41,18 @@ public class HelloApplication extends Application {
         //stg.setScene(scene);
         //return scene;
     }
+    //called to change scene
     public void newScene(String fxml) throws IOException{
         Parent pane = FXMLLoader.load(getClass().getResource(fxml));
         stg.setScene(new Scene(pane, 800, 700));
         stg.show();
     }
-
+    //method called to change scene
     public void changeScene(Parent pane) throws IOException{
         stg.getScene().setRoot(pane);
-        System.out.println("made it after changeScene method");
-        //Scene scene = new Scene( pane );
-        //stg.setScene(scene);
-        //return scene;
+
     }
 
-    /*public Scene changeScene(String fxml) throws IOException {
-        Parent pane = FXMLLoader.load(getClass().getResource(fxml));
-        stg.getScene().setRoot(pane);
-        return stg.getScene();
-    }*/
 
 
 

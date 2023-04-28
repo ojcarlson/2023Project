@@ -1,3 +1,11 @@
+/*
+Olaf Carlson
+ocarlson@iu.edu
+Spring 2023 Project
+Indiana University Southeast
+
+This class is Controller for remove-inventory.fxml GUI
+ */
 package com.example.project;
 
 import javafx.event.ActionEvent;
@@ -15,6 +23,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class removeInventoryController {
+
+    //creates Buttons, labels and TextFields
     @FXML
     private Button submit2Button;
 
@@ -54,6 +64,8 @@ public class removeInventoryController {
     @FXML
     private Label information2Label;
 
+    //Action Event that looks to see if TextFields are empty and informs the user with error
+    //if not empty calls removeInventory method.
     public void setSubmit2Button(ActionEvent event) throws SQLException, IOException {
         System.out.println("removeInventory Controller 1");
         if (buildingLocation2TextField.getText().isBlank() == false && heci2TextField.getText().isBlank() == false && status2TextField.getText().isBlank() == false && bayLocation2TextField.getText().isBlank() == false) {
@@ -63,6 +75,7 @@ public class removeInventoryController {
         }
     }
 
+    //method to remove Inventory
     public void removeInventory() throws SQLException {
         //HelloApplication m = new HelloApplication();
         System.out.println("removeInventory Controller 2");
@@ -84,10 +97,10 @@ public class removeInventoryController {
         int code;
         String title;
         int count = 0;
-        System.out.println("removeInventory Controller 5");
+
         //while loop for verifying if exist
          while (resultSet2.next()) {
-             System.out.println("removeInventory Controller 6");
+
             count++;
             String buildingLocation = resultSet2.getString("buildingLocation");
             String heci = resultSet2.getString("heci");
@@ -97,28 +110,28 @@ public class removeInventoryController {
             String status = resultSet2.getString("status");
             int quantity = resultSet2.getInt("quantity");
         }
-        System.out.println("removeInventory Controller 7");
+
         //if exists do the following
         if (count !=0) {
-            System.out.println("removeInventory Controller 8");
+
             boolean executionworked;
-            System.out.println("removeInventory Controller 9");
+
             //ResultSet executionworked;
             executionworked = qc3.execute("DELETE FROM Inventory WHERE buildingLocation = '"+ buildingLocation2TextField.getText() + "' AND heci = '" + heci2TextField.getText() + "' AND bayLocation = '" + bayLocation2TextField.getText() + "' AND status = '" + status2TextField.getText() + "' " );
-            System.out.println("removeInventory Controller 10");
+
             //executionworked = qc2.executeQuery(deleteInventory);
             information2Label.setText("Congratulations Inventory Removed!");
             qc3.close();
             connection.close();
-            System.out.println("removeInventory Controller 11");
+
         }
         //if does not exist print out for user
         else {
-            System.out.println("removeInventory Controller 9");
+
             information2Label.setText("Inventory not found. Try again!");
         }
     }
-
+    //Action Event to Go Back to Search Inventory Window
     public void setGoBackButton2 (ActionEvent event) throws SQLException, IOException {
         HelloApplication m = new HelloApplication();
         try{
@@ -127,7 +140,7 @@ public class removeInventoryController {
             throw new RuntimeException(e);
         }
     }
-
+    //Action Event to exit program when exit Button is pressed
     public void setExit2Button(ActionEvent event) {
         Stage stage = (Stage) exit2Button.getScene().getWindow();
         stage.close();

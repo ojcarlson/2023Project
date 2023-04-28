@@ -1,3 +1,9 @@
+/*
+Olaf Carlson
+ocarlson@iu.edu
+Spring 2023 Project
+Indiana University Southeast
+ */
 package com.example.project;
 
 import java.sql.Connection;
@@ -5,9 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
-//Olaf Carlson
-//Indiana University Southeast
-//INFO 451
+
 
 public class InventorySystem {
     public static void main(String[] args) throws SQLException {
